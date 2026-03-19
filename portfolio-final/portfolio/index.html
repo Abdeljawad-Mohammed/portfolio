@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abdeljawad Mohammed — Technical Product & Automation</title>
+  <meta name="description" content="Technical Product Manager & Automation Engineer building systems that eliminate manual work."/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:       #080C14;
+      --bg1:      #0D1220;
+      --bg2:      #121929;
+      --border:   rgba(255,255,255,0.07);
+      --border-h: rgba(99,179,255,0.3);
+      --text:     #F0F4FF;
+      --text-2:   #8B9CBB;
+      --text-3:   #3D4F6E;
+      --blue:     #4D9EFF;
+      --blue-2:   #2563EB;
+      --blue-glow:rgba(77,158,255,0.15);
+      --green:    #34D399;
+      --amber:    #FBBF24;
+      --purple:   #A78BFA;
+      --red:      #F87171;
+      --mono:     'JetBrains Mono', monospace;
+      --sans:     'Inter', sans-serif;
+      --r:        10px;
+      --r-lg:     14px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    body.no-scroll { overflow: hidden; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 64px;
+      display: flex; align-items: center;
+      background: rgba(8,12,20,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1140px; margin: 0 auto; padding: 0 2rem;
+      width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .nav-avatar-wrap { position: relative; width: 36px; height: 36px; flex-shrink: 0; }
+    .nav-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 2px solid var(--blue);
+      object-fit: cover; background: var(--bg2);
+      display: block;
+    }
+    .nav-avatar-initials {
+      display: none;
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 2px solid var(--blue);
+      background: var(--bg2);
+      align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700;
+      color: var(--blue); letter-spacing: 0.05em;
+    }
+    .nav-name {
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--text); letter-spacing: -0.01em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { font-size: 0.88rem; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      font-size: 0.85rem; font-weight: 600;
+      padding: 8px 18px; border-radius: var(--r);
+      background: var(--blue-2); color: #fff;
+      text-decoration: none; transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--blue); }
+    .mobile-toggle {
+      display: none; background: none;
+      border: 1px solid var(--border); border-radius: var(--r);
+      padding: 8px 10px; cursor: pointer; flex-direction: column; gap: 4px;
+    }
+    .mobile-toggle span { display: block; width: 18px; height: 2px; background: var(--text-2); border-radius: 2px; transition: all 0.25s; }
+    .nav-open .mobile-toggle span:nth-child(1) { transform: rotate(45deg) translate(4px,4px); }
+    .nav-open .mobile-toggle span:nth-child(2) { opacity: 0; }
+    .nav-open .mobile-toggle span:nth-child(3) { transform: rotate(-45deg) translate(4px,-4px); }
+
+    /* ─── LAYOUT ─── */
+    .wrap { max-width: 1140px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 100px 0; }
+
+    /* ─── HERO ─── */
+    #hero {
+      padding: 160px 0 100px;
+      min-height: 70vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-grid-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(77,158,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(77,158,255,0.04) 1px, transparent 1px);
+      background-size: 72px 72px;
+    }
+    .hero-glow {
+      position: absolute; top: -200px; left: -100px;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 860px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em;
+      color: var(--green);
+      border: 1px solid rgba(52,211,153,0.3);
+      background: rgba(52,211,153,0.07);
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 32px;
+    }
+    .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.75)} }
+
+    .hero-greeting {
+      font-size: 0.9rem; font-weight: 500;
+      color: var(--blue); letter-spacing: 0.01em;
+      margin-bottom: 20px; display: block;
+    }
+    .hero-divider {
+      width: 32px; height: 2px;
+      background: var(--blue-2); border-radius: 2px;
+      margin: 16px 0 20px;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .hero-title-blue { color: var(--text); display: inline; }
+
+    .hero-role {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 500;
+      color: var(--text-2);
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+    .hero-role span { color: var(--text); }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: var(--r);
+      font-size: 0.9rem; font-weight: 600;
+      text-decoration: none; transition: all 0.15s;
+      cursor: pointer; border: none; font-family: var(--sans);
+      white-space: nowrap; letter-spacing: -0.01em;
+    }
+    .btn-blue { background: var(--blue-2); color: #fff; box-shadow: 0 0 24px rgba(37,99,235,0.35); }
+    .btn-blue:hover { background: var(--blue); box-shadow: 0 0 32px rgba(77,158,255,0.4); }
+    .btn-outline { background: transparent; color: var(--text-2); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--border-h); color: var(--text); }
+    .btn-sm { padding: 8px 16px; font-size: 0.82rem; }
+
+    /* STATS */
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--r-lg);
+      overflow: hidden; margin-top: 64px;
+    }
+    .stat { background: var(--bg1); padding: 24px 28px; transition: background 0.15s; }
+    .stat:hover { background: var(--bg2); }
+    .stat-n { font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; color: var(--blue); line-height: 1; margin-bottom: 6px; }
+    .stat-l { font-family: var(--mono); font-size: 0.65rem; color: var(--text-3); letter-spacing: 0.06em; text-transform: uppercase; }
+
+    /* ─── SECTION HEADER ─── */
+    .sec-head { margin-bottom: 56px; }
+    .sec-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em;
+      color: var(--blue); text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .sec-tag::before { content: ''; width: 20px; height: 1px; background: var(--blue); }
+    h2 {
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text); margin-bottom: 12px; line-height: 1.15;
+    }
+    .sec-sub { font-size: 1rem; color: var(--text-2); max-width: 500px; line-height: 1.7; }
+
+    /* ─── ABOUT ─── */
+    .about-layout { display: block; max-width: 720px; }
+    .about-text p { font-size: 1rem; color: var(--text-2); line-height: 1.85; margin-bottom: 20px; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--text); font-weight: 600; }
+
+    .about-card {
+      border: 1px solid var(--border); border-radius: var(--r-lg);
+      overflow: hidden; background: var(--bg1);
+      position: sticky; top: 80px;
+    }
+    .about-card-img {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover;
+      background: var(--bg2); display: block;
+      filter: brightness(0.9) saturate(0.8);
+    }
+    .about-card-img-placeholder {
+      width: 100%; aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--bg2) 0%, #1a2540 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+    }
+    .about-meta { padding: 0; }
+    .meta-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 20px; border-bottom: 1px solid var(--border); font-size: 0.88rem;
+    }
+    .meta-row:last-child { border-bottom: none; }
+    .meta-key { font-family: var(--mono); font-size: 0.65rem; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; }
+    .meta-val { color: var(--text-2); font-weight: 500; }
+    .meta-green { color: var(--green); font-weight: 600; }
+
+    /* impact bar removed */
+
+    /* ─── EXPERIENCE ─── */
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-item {
+      display: grid; grid-template-columns: 200px 1fr;
+      gap: 48px; padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    .exp-item:first-child { padding-top: 0; }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-date { font-family: var(--mono); font-size: 0.7rem; color: var(--text-3); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+    .exp-co { font-size: 0.95rem; font-weight: 700; color: var(--blue); }
+    .exp-role { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 14px; letter-spacing: -0.01em; }
+    .exp-bullets { list-style: none; }
+    .exp-bullets li {
+      font-size: 0.92rem; color: var(--text-2);
+      display: flex; gap: 12px; line-height: 1.65; margin-bottom: 8px;
+    }
+    .exp-bullets li::before { content: '→'; color: var(--blue); flex-shrink: 0; font-size: 0.85rem; margin-top: 1px; }
+
+    /* ─── PROJECTS ─── */
+    .project-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;
+    }
+    .proj {
+      background: var(--bg1); display: flex; flex-direction: column;
+      transition: all 0.2s; position: relative;
+    }
+    .proj:hover { background: var(--bg2); }
+    .proj-tag {
+      display: inline-flex; align-self: flex-start;
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em;
+      padding: 4px 10px; border-radius: 100px; border: 1px solid; font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .t-blue   { color: var(--blue);   background: rgba(37,99,235,0.12);   border-color: rgba(77,158,255,0.3); }
+    .t-green  { color: var(--green);  background: rgba(16,150,90,0.12);   border-color: rgba(52,211,153,0.3); }
+    .t-amber  { color: #FCD34D;      background: rgba(180,130,10,0.12);   border-color: rgba(251,191,36,0.3); }
+    .t-purple { color: var(--purple); background: rgba(109,70,220,0.12);  border-color: rgba(167,139,250,0.3); }
+    .t-red    { color: var(--red);    background: rgba(200,60,60,0.12);   border-color: rgba(248,113,113,0.3); }
+
+    .proj-body { padding: 28px 24px; flex: 1; display: flex; flex-direction: column; }
+    .proj-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 10px; }
+    .proj-title { font-size: 1rem; font-weight: 700; color: var(--text); line-height: 1.3; letter-spacing: -0.01em; }
+    .proj-year { font-family: var(--mono); font-size: 0.65rem; color: var(--text-3); flex-shrink: 0; margin-top: 3px; }
+    .proj-desc { font-size: 0.85rem; color: var(--text-2); line-height: 1.65; margin-bottom: 16px; flex: 1; }
+    .proj-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; align-items: center; }
+    .proj-stack img { width: 15px; height: 15px; object-fit: contain; opacity: 0.5; transition: opacity 0.15s; }
+    .proj:hover .proj-stack img { opacity: 0.85; }
+    .proj-stack .sep { width: 1px; height: 14px; background: var(--border); margin: 0 2px; }
+    .badge {
+      font-family: var(--mono); font-size: 0.62rem;
+      background: var(--bg2); border: 1px solid var(--border);
+      color: var(--text-3); padding: 3px 8px; border-radius: 4px;
+    }
+    .proj-actions { display: flex; gap: 7px; margin-top: auto; }
+    .btn-proj-primary {
+      flex: 1; justify-content: center;
+      background: var(--blue-2); color: #fff; font-size: 0.8rem; padding: 8px 14px; border-radius: 8px;
+      display: inline-flex; align-items: center; cursor: pointer; border: none; font-family: var(--sans); font-weight: 600; transition: background 0.15s;
+    }
+    .btn-proj-primary:hover { background: var(--blue); }
+    .btn-proj-ghost {
+      padding: 8px 14px; border-radius: 8px; font-size: 0.8rem;
+      background: transparent; border: 1px solid var(--border); color: var(--text-2);
+      display: inline-flex; align-items: center; text-decoration: none; font-weight: 600; transition: all 0.15s; font-family: var(--sans);
+    }
+    .btn-proj-ghost:hover { border-color: var(--border-h); color: var(--blue); }
+
+    /* ─── SKILLS ─── */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;
+    }
+    .sg { background: var(--bg1); padding: 28px; }
+    .sg-name {
+      font-size: 0.8rem; font-weight: 700; color: var(--blue);
+      text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px;
+      padding-bottom: 12px; border-bottom: 1px solid var(--border);
+    }
+    .sg-items { display: flex; flex-direction: column; gap: 10px; }
+    .sg-item { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--text-2); font-weight: 500; }
+    .sg-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+
+    /* ─── TOOLS ─── */
+    .tools-grid {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;
+    }
+    .tg { background: var(--bg1); padding: 28px; }
+    .tg-name {
+      font-size: 0.78rem; font-weight: 700; color: var(--blue);
+      text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px;
+      padding-bottom: 12px; border-bottom: 1px solid var(--border);
+    }
+    .tg-items { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tool-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 12px; border-radius: var(--r);
+      font-size: 0.83rem; font-weight: 500;
+      background: var(--bg2); border: 1px solid var(--border);
+      color: var(--text-2); transition: all 0.15s; cursor: default;
+    }
+    .tool-pill:hover { border-color: rgba(77,158,255,0.4); color: var(--blue); }
+    .tool-pill img { width: 15px; height: 15px; object-fit: contain; flex-shrink: 0; }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--bg1); border-top: 1px solid var(--border); }
+    .contact-layout { display: grid; grid-template-columns: 1fr; max-width: 600px; gap: 0; }
+    .contact-sub { max-width: 100%; }
+    .contact-heading { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 16px; }
+    .contact-heading .blue { color: var(--blue); }
+    .contact-sub { font-size: 1rem; color: var(--text-2); line-height: 1.7; max-width: 380px; margin-bottom: 36px; }
+    .contact-links { display: flex; flex-direction: column; gap: 10px; }
+    .c-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 22px; border-radius: var(--r-lg);
+      border: 1px solid var(--border); text-decoration: none;
+      background: var(--bg); transition: all 0.15s;
+    }
+    .c-link:hover { border-color: var(--border-h); background: var(--bg2); }
+    .c-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .c-icon svg { width: 20px; height: 20px; }
+    .c-body { flex: 1; }
+    .c-label { font-family: var(--mono); font-size: 0.65rem; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
+    .c-val { font-size: 0.92rem; font-weight: 600; color: var(--text); }
+    .c-arr { color: var(--text-3); font-size: 1.1rem; }
+
+    .contact-card {
+      border: 1px solid var(--border); border-radius: var(--r-lg);
+      overflow: hidden; background: var(--bg); position: sticky; top: 80px;
+    }
+    .cc-top {
+      padding: 24px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 14px;
+      background: linear-gradient(135deg, var(--bg2) 0%, var(--bg1) 100%);
+    }
+    .cc-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      border: 3px solid var(--blue); object-fit: cover; background: var(--bg2);
+    }
+    .cc-name { font-size: 1rem; font-weight: 800; color: var(--text); letter-spacing: -0.01em; margin-bottom: 2px; }
+    .cc-role { font-size: 0.78rem; color: var(--blue); font-weight: 600; font-family: var(--mono); }
+    .cc-rows { padding: 0; }
+    .cc-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 22px; border-bottom: 1px solid var(--border); font-size: 0.88rem;
+    }
+    .cc-row:last-child { border-bottom: none; }
+    .cc-key { font-family: var(--mono); font-size: 0.65rem; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; }
+    .cc-val { color: var(--text-2); font-weight: 500; }
+    .avail-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--mono); font-size: 0.68rem; font-weight: 600;
+      color: var(--green); background: rgba(52,211,153,0.1);
+      border: 1px solid rgba(52,211,153,0.3);
+      padding: 4px 10px; border-radius: 100px;
+    }
+    .avail-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
+
+    /* ─── FOOTER ─── */
+    footer { border-top: 1px solid var(--border); padding: 28px 0; background: var(--bg); }
+    .footer-inner {
+      max-width: 1140px; margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { font-family: var(--mono); font-size: 0.7rem; color: var(--text-3); letter-spacing: 0.04em; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-family: var(--mono); font-size: 0.7rem; color: var(--text-3); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--blue); }
+
+    /* ─── MODAL ─── */
+    .modal-bg {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s;
+    }
+    .modal-bg.open { opacity: 1; visibility: visible; }
+    .modal {
+      background: var(--bg1); border: 1px solid var(--border);
+      border-radius: var(--r-lg); width: 92%; max-width: 780px;
+      max-height: 88vh; overflow-y: auto; padding: 40px;
+      position: relative; transform: translateY(12px); transition: transform 0.2s;
+    }
+    .modal-bg.open .modal { transform: translateY(0); }
+    .modal-x {
+      position: absolute; top: 16px; right: 16px;
+      width: 34px; height: 34px; border-radius: 8px;
+      background: var(--bg2); border: 1px solid var(--border);
+      color: var(--text-2); cursor: pointer; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s; font-family: var(--sans);
+    }
+    .modal-x:hover { background: var(--border); color: var(--text); }
+    .modal-title { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 16px; }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
+    .modal-block { margin-bottom: 24px; }
+    .modal-lbl { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; color: var(--blue); text-transform: uppercase; margin-bottom: 8px; }
+    .modal-p { font-size: 0.9rem; color: var(--text-2); line-height: 1.75; }
+    .modal-arch {
+      font-family: var(--mono); font-size: 0.8rem;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 14px 18px;
+      color: var(--blue); line-height: 1.6;
+    }
+    .modal-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .modal-tool {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 13px; border-radius: var(--r);
+      font-size: 0.82rem; font-weight: 500;
+      background: var(--bg2); border: 1px solid var(--border);
+      color: var(--text-2);
+    }
+    .modal-tool img { width: 15px; height: 15px; object-fit: contain; }
+    .modal-gallery { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; margin-top: 8px; }
+    .g-slot {
+      aspect-ratio: 16/9; background: var(--bg2); border: 1px dashed var(--border);
+      border-radius: var(--r); display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 0.65rem; color: var(--text-3); overflow: hidden;
+    }
+    .g-slot img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      border-radius: var(--r); cursor: pointer; transition: transform 0.3s;
+    }
+    .g-slot img:hover { transform: scale(1.03); }
+    .g-slot-wrap { display: flex; flex-direction: column; gap: 4px; }
+    .g-caption { font-family: var(--mono); font-size: 0.62rem; color: var(--text-3); letter-spacing: 0.02em; padding: 0 2px; }
+
+    /* ─── CLICKUP CARD ─── */
+    /* clickup card same as other project cards */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      .project-grid { grid-template-columns: repeat(2,1fr); }
+      .skills-grid, .tools-grid { grid-template-columns: repeat(2,1fr); }
+      .about-layout { grid-template-columns: 1fr; gap: 48px; }
+      .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+      .impact-bar { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 640px) {
+      nav .nav-links {
+        position: fixed; top: 64px; right: 0; width: 260px;
+        height: calc(100vh - 64px); background: var(--bg1);
+        border-left: 1px solid var(--border); flex-direction: column;
+        padding: 24px; gap: 0; transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); z-index: 199;
+      }
+      nav .nav-links li { border-bottom: 1px solid var(--border); }
+      nav .nav-links a { display: block; padding: 14px 0; font-size: 1rem; color: var(--text); }
+      .nav-open .nav-links { transform: translateX(0); }
+      .mobile-toggle { display: flex; }
+      .nav-cta { display: none; }
+      .project-grid { grid-template-columns: 1fr; gap: 16px; background: transparent; border: none; border-radius: 0; }
+      .proj { border: 1px solid var(--border); border-radius: var(--r-lg); }
+      .skills-grid, .tools-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(2,1fr); }
+      .stat { border-bottom: 1px solid var(--border); }
+      .impact-bar { grid-template-columns: 1fr 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 8px; }
+      section { padding: 56px 0; }
+      .sec-head { margin-bottom: 32px; }
+      .about-layout { gap: 28px; }
+      .hero-badge { margin-bottom: 20px; }
+      h1 { margin-bottom: 12px; }
+      .hero-desc { margin-bottom: 28px; font-size: 0.95rem; }
+      #hero { padding-top: 100px; padding-bottom: 60px; min-height: auto; }
+      .modal { padding: 24px; }
+      .modal-gallery { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="sitenav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-avatar-wrap">
+        <img src="images/portfolio_image.jpg" alt="AM" class="nav-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="nav-avatar-initials">AM</div>
+      </div>
+      <span class="nav-name">Abdeljawad Mohammed</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="images/cv.pdf" download class="nav-cta">Download CV</a>
+      <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="wrap hero-content">
+    <div class="hero-badge"><span class="badge-dot"></span>Available · Cairo · Remote-friendly</div>
+    <h1>Abdeljawad <span class="hero-title-blue">Mohammed</span></h1>
+    <span class="hero-greeting">Technical Product Manager & Automation Engineer</span>
+    <div class="hero-divider"></div>
+    <p class="hero-desc">I build systems that eliminate manual work — from n8n workflows and ERP integrations to AI-powered internal tools, all shipped and running in production.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-blue">View My Work →</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      <a href="images/cv.pdf" download class="btn btn-outline">Download CV ↓</a>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">About</div>
+      <h2>Background &amp; Approach</h2>
+    </div>
+    <div class="about-layout reveal">
+      <div class="about-text">
+        <p>Based in Cairo, I work at the intersection of <strong>product management, automation engineering, and development</strong>. With 2+ years building real systems at two companies, I design and ship automations, internal tools, and e-commerce infrastructure — from n8n workflows connecting ERP to Magento, to AI-powered web apps used daily in production.</p>
+        <p>I serve as the <strong>bridge between leadership and development teams</strong> — translating business needs into clear technical requirements, coordinating delivery, and making sure what gets built actually solves the right problem. I've worked directly with CEOs across all phases of product development, operations, and business growth.</p>
+        <p>My focus is always on <strong>eliminating the manual, the repetitive, and the error-prone</strong> — and replacing it with systems that run themselves.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Experience</div>
+      <h2>Professional Experience</h2>
+    </div>
+    <div class="exp-list reveal">
+      <div class="exp-item">
+        <div><div class="exp-date">2025 — Present</div><div class="exp-co">Locafy</div></div>
+        <div>
+          <div class="exp-role">Technical Product Manager & Automation Engineer</div>
+          <p style="font-size:0.95rem;color:var(--text-2);line-height:1.8;">Scope technical requirements, coordinate development, and build n8n workflows, API integrations, and real-time dashboards for a multi-brand Magento marketplace.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div><div class="exp-date">2024 — Present</div><div class="exp-co">Brass & Wood</div></div>
+        <div>
+          <div class="exp-role">E-commerce Manager & Web Developer</div>
+          <p style="font-size:0.95rem;color:var(--text-2);line-height:1.8;">Own the Magento storefront, catalog architecture, and marketplace operations across Alibaba and Amazon — plus AI-powered product automation tooling.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Education</div>
+      <h2>Academic Background</h2>
+    </div>
+    <div class="reveal" style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;background:var(--bg1);max-width:600px;">
+      <div style="padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+        <div>
+          <div style="font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:3px;">MSc in Computer Science</div>
+          <div style="font-size:0.82rem;color:var(--text-2);">Cairo University</div>
+        </div>
+        <div style="font-family:var(--mono);font-size:0.68rem;color:var(--text-3);letter-spacing:0.06em;">Ongoing</div>
+      </div>
+      <div style="padding:20px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+        <div>
+          <div style="font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:3px;">BSc in Computer Science — Excellent (3.71 / 4.0)</div>
+          <div style="font-size:0.82rem;color:var(--text-2);">6 October University</div>
+        </div>
+        <div style="font-family:var(--mono);font-size:0.68rem;color:var(--text-3);letter-spacing:0.06em;">Completed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Selected Work</div>
+      <h2>Projects</h2>
+      <p class="sec-sub">A selection of automation systems, internal tools, and integrations built and deployed across two companies.</p>
+    </div>
+    <div class="project-grid reveal">
+
+      <article class="proj">
+        <div class="proj-body">
+          <span class="proj-tag t-blue">Internal Tool</span>
+          <div class="proj-top">
+            <div class="proj-title">Locafy Insights Dashboard</div>
+            <div class="proj-year">2026</div>
+          </div>
+          <p class="proj-desc">Real-time Magento orders dashboard. Revenue, top products, brand analytics. Used daily.</p>
+          <div class="proj-stack"><span class="badge">HTML/JS</span><span class="badge">Magento REST API</span><span class="badge">n8n</span><span class="badge">PWA</span><span class="sep"></span><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JS"> <img src="https://cdn.simpleicons.org/n8n/EA4B71" alt="n8n"> <img src="https://cdn.simpleicons.org/netlify/00C7B7" alt="Netlify"></div>
+          <div class="proj-actions">
+            <button class="btn-proj-primary open-modal" data-p="ins">View Details</button>
+            <a href="https://locafy-orders-dashboard.netlify.app" target="_blank" class="btn-proj-ghost">Live ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-body">
+          <span class="proj-tag t-green">Automation</span>
+          <div class="proj-top">
+            <div class="proj-title">Locafy Bosta Dashboard</div>
+            <div class="proj-year">2026</div>
+          </div>
+          <p class="proj-desc">4-min manual shipment flow → 2 clicks. Fuzzy district matching, auto courier routing.</p>
+          <div class="proj-stack"><span class="badge">Vanilla JS</span><span class="badge">n8n Cloud</span><span class="badge">Bosta API v2</span><span class="sep"></span><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JS"> <img src="https://cdn.simpleicons.org/n8n/EA4B71" alt="n8n"> <img src="https://cdn.simpleicons.org/googlesheets/34A853" alt="Sheets"></div>
+          <div class="proj-actions">
+            <button class="btn-proj-primary open-modal" data-p="bosta">View Details</button>
+            <a href="https://locafy-bosta-shippments.netlify.app" target="_blank" class="btn-proj-ghost">Live ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-body">
+          <span class="proj-tag t-purple">AI Automation</span>
+          <div class="proj-top">
+            <div class="proj-title">Product Image Automation</div>
+            <div class="proj-year">2026</div>
+          </div>
+          <p class="proj-desc">AI background removal + color variants. Hours → seconds per SKU.</p>
+          <div class="proj-stack"><span class="badge">n8n</span><span class="badge">AI Image API</span><span class="sep"></span><img src="https://cdn.simpleicons.org/n8n/EA4B71" alt="n8n"></div>
+          <div class="proj-actions"><button class="btn-proj-primary open-modal" data-p="img">View Details</button></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-body">
+          <span class="proj-tag t-amber">ERP Integration</span>
+          <div class="proj-top">
+            <div class="proj-title">Magento → Odoo Order Sync</div>
+            <div class="proj-year" style="color:var(--amber)">In Progress</div>
+          </div>
+          <p class="proj-desc">Magento → Odoo order sync with WhatsApp SO confirmation. In progress.</p>
+          <div class="proj-stack"><span class="badge">Magento REST API</span><span class="badge">Odoo XML-RPC</span><span class="badge">n8n</span><span class="badge">Webhooks</span><span class="sep"></span><img src="https://cdn.simpleicons.org/odoo/714B67" alt="Odoo"> <img src="https://cdn.simpleicons.org/n8n/EA4B71" alt="n8n"></div>
+          <div class="proj-actions"><button class="btn-proj-primary open-modal" data-p="sync">View Details</button></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-body">
+          <span class="proj-tag t-green">Automation</span>
+          <div class="proj-top">
+            <div class="proj-title">ERP ↔ Magento Stock Monitor</div>
+            <div class="proj-year">2025</div>
+          </div>
+          <p class="proj-desc">ERP ↔ storefront stock validation every 15 min. 99.9% accuracy.</p>
+          <div class="proj-stack"><span class="badge">Odoo Stock API</span><span class="badge">n8n</span><span class="badge">Magento API</span><span class="sep"></span><img src="https://cdn.simpleicons.org/odoo/714B67" alt="Odoo"> <img src="https://cdn.simpleicons.org/n8n/EA4B71" alt="n8n"></div>
+          <div class="proj-actions"><button class="btn-proj-primary open-modal" data-p="stock">View Details</button></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-body">
+          <span class="proj-tag t-blue">Sales Automation</span>
+          <div class="proj-top">
+            <div class="proj-title">WhatsApp Sales Bot</div>
+            <div class="proj-year">2025</div>
+          </div>
+          <p class="proj-desc">Large-scale sales + support routing bot. 45 min → 2 min response time.</p>
+          <div class="proj-stack"><span class="badge">Rasayel API</span><span class="badge">Automation Logic</span><span class="sep"></span><img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp"></div>
+          <div class="proj-actions"><button class="btn-proj-primary open-modal" data-p="wa">View Details</button></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-body">
+          <span class="proj-tag t-green">Automation</span>
+          <div class="proj-top">
+            <div class="proj-title">Vendor Communication System</div>
+            <div class="proj-year">2025</div>
+          </div>
+          <p class="proj-desc">Auto-creates vendor Telegram groups per order. Built and tested. 5–10 min → seconds.</p>
+          <div class="proj-stack"><span class="badge">Odoo ERP</span><span class="badge">n8n</span><span class="badge">FastAPI</span><span class="badge">Telegram API</span><span class="sep"></span><img src="https://cdn.simpleicons.org/odoo/714B67" alt="Odoo"> <img src="https://cdn.simpleicons.org/n8n/EA4B71" alt="n8n"> <img src="https://cdn.simpleicons.org/telegram/26A5E4" alt="Telegram"></div>
+          <div class="proj-actions"><button class="btn-proj-primary open-modal" data-p="vendor">View Details</button></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-body">
+          <span class="proj-tag t-blue">Internal Tool</span>
+          <div class="proj-top">
+            <div class="proj-title">Automated PDF Product Sheets</div>
+            <div class="proj-year">2025</div>
+          </div>
+          <p class="proj-desc">One-click branded PDF product sheets from catalog data.</p>
+          <div class="proj-stack"><span class="badge">HTML/CSS/JS</span><span class="badge">PDF Lib</span><span class="sep"></span><img src="https://cdn.simpleicons.org/html5/E34F26" alt="HTML"> <img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JS"></div>
+          <div class="proj-actions"><button class="btn-proj-primary open-modal" data-p="pdf">View Details</button></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-body">
+          <span class="proj-tag t-purple">Product Management</span>
+          <div class="proj-top">
+            <div class="proj-title">150+ Requirements Delivered</div>
+            <div class="proj-year" style="color:var(--amber)">In Progress</div>
+          </div>
+          <p class="proj-desc">PRDs, backlog, dev sprints, QA sign-off. 150+ tasks shipped.</p>
+          <div class="proj-stack"><span class="badge">ClickUp</span><span class="badge">PRD Writing</span><span class="badge">Dev Coordination</span><span class="badge">QA Sign-off</span><span class="sep"></span><img src="https://cdn.simpleicons.org/clickup/7B68EE" alt="ClickUp"></div>
+          <div class="proj-actions">
+            <button class="btn-proj-primary open-modal" data-p="cu">View Details</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Skills</div>
+      <h2>Core Competencies</h2>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="sg">
+        <div class="sg-name">Automation & Integration</div>
+        <div class="sg-items">
+          <div class="sg-item"><div class="sg-dot"></div>n8n workflow design</div>
+          <div class="sg-item"><div class="sg-dot"></div>REST API integration</div>
+          <div class="sg-item"><div class="sg-dot"></div>Webhook architecture</div>
+          <div class="sg-item"><div class="sg-dot"></div>ERP system integration</div>
+          <div class="sg-item"><div class="sg-dot"></div>Error handling & retry logic</div>
+        </div>
+      </div>
+      <div class="sg">
+        <div class="sg-name">Development</div>
+        <div class="sg-items">
+          <div class="sg-item"><div class="sg-dot"></div>JavaScript / Python</div>
+          <div class="sg-item"><div class="sg-dot"></div>Web apps & dashboards</div>
+          <div class="sg-item"><div class="sg-dot"></div>PWA development</div>
+          <div class="sg-item"><div class="sg-dot"></div>Backend APIs (FastAPI)</div>
+          <div class="sg-item"><div class="sg-dot"></div>HTML / CSS frontend</div>
+        </div>
+      </div>
+      <div class="sg">
+        <div class="sg-name">E-commerce & ERP</div>
+        <div class="sg-items">
+          <div class="sg-item"><div class="sg-dot"></div>Magento 2 administration</div>
+          <div class="sg-item"><div class="sg-dot"></div>Odoo ERP operations</div>
+          <div class="sg-item"><div class="sg-dot"></div>Alibaba & Amazon marketplaces</div>
+          <div class="sg-item"><div class="sg-dot"></div>Catalog & product architecture</div>
+          <div class="sg-item"><div class="sg-dot"></div>Order & fulfillment workflows</div>
+        </div>
+      </div>
+      <div class="sg">
+        <div class="sg-name">Product Management</div>
+        <div class="sg-items">
+          <div class="sg-item"><div class="sg-dot"></div>Requirements & PRD writing</div>
+          <div class="sg-item"><div class="sg-dot"></div>Roadmap & backlog management</div>
+          <div class="sg-item"><div class="sg-dot"></div>Stakeholder communication</div>
+          <div class="sg-item"><div class="sg-dot"></div>UX & functional testing</div>
+          <div class="sg-item"><div class="sg-dot"></div>Data visualization & reporting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Tools & Technologies</div>
+      <h2>Technical Stack</h2>
+    </div>
+    <div class="tools-grid reveal">
+      <div class="tg">
+        <div class="tg-name">Automation & ERP</div>
+        <div class="tg-items">
+          <div class="tool-pill"><img src="https://cdn.simpleicons.org/n8n/EA4B71" alt="">n8n</div>
+          <div class="tool-pill"><img src="https://cdn.simpleicons.org/odoo/714B67" alt="">Odoo ERP</div>
+          <div class="tool-pill"><img src="https://cdn.simpleicons.org/shopify/96BF48" alt="">Shopify</div>
+          <div class="tool-pill"><img src="images/magento-icon.png" alt="">Magento</div>
+        </div>
+      </div>
+      <div class="tg">
+        <div class="tg-name">Development</div>
+        <div class="tg-items">
+          <div class="tool-pill"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="">JavaScript</div>
+          <div class="tool-pill"><img src="https://cdn.simpleicons.org/python/3776AB" alt="">Python</div>
+          <div class="tool-pill"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="">FastAPI</div>
+          <div class="tool-pill"><img src="https://cdn.simpleicons.org/html5/E34F26" alt="">HTML/CSS</div>
+          <div class="tool-pill"><img src="https://cdn.simpleicons.org/github/ffffff" alt="">GitHub</div>
+        </div>
+      </div>
+      <div class="tg">
+        <div class="tg-name">Infrastructure</div>
+        <div class="tg-items">
+          <div class="tool-pill"><img src="https://cdn.simpleicons.org/cloudflare/F6821F" alt="">Cloudflare</div>
+          <div class="tool-pill"><img src="https://cdn.simpleicons.org/netlify/00C7B7" alt="">Netlify</div>
+          <div class="tool-pill"><img src="https://cdn.simpleicons.org/google/4285F4" alt="">Apps Script</div>
+          <div class="tool-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>REST APIs</div>
+        </div>
+      </div>
+      <div class="tg">
+        <div class="tg-name">Productivity & AI</div>
+        <div class="tg-items">
+          <div class="tool-pill"><img src="https://cdn.simpleicons.org/clickup/7B68EE" alt="">ClickUp</div>
+          <div class="tool-pill"><img src="images/vscode.png" alt="">VS Code</div>
+          <div class="tool-pill"><img src="images/antigravity-icon.png" alt="">Antigravity AI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-layout reveal">
+      <div>
+        <div class="sec-tag" style="margin-bottom:14px">Contact</div>
+        <h2 class="contact-heading">Let's work<br><span class="blue">together.</span></h2>
+        <p class="contact-sub">Open to full-time roles, consulting engagements, or a conversation about product and automation. Based in Cairo — available remotely.</p>
+        <div class="contact-links">
+          <a href="mailto:Abdeljawad202125001@gmail.com" class="c-link">
+            <div class="c-icon" style="background:rgba(77,158,255,0.12);color:var(--blue)">
+              <svg fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="c-body"><div class="c-label">Email</div><div class="c-val">Abdeljawad202125001@gmail.com</div></div>
+            <span class="c-arr">↗</span>
+          </a>
+          <a href="https://www.linkedin.com/in/abdeljawad-mohammad-a510312a4/" target="_blank" class="c-link">
+            <div class="c-icon" style="background:rgba(0,119,181,0.15);color:#0077B5">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </div>
+            <div class="c-body"><div class="c-label">LinkedIn</div><div class="c-val">abdeljawad-mohammad</div></div>
+            <span class="c-arr">↗</span>
+          </a>
+          <a href="https://wa.me/201142494264" target="_blank" class="c-link">
+            <div class="c-icon" style="background:rgba(37,211,102,0.12);color:#25D366">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <div class="c-body"><div class="c-label">WhatsApp</div><div class="c-val">+20 114 249 4264</div></div>
+            <span class="c-arr">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Abdeljawad Mohammed · Technical Product Manager & Automation Engineer</span>
+    <div class="footer-links">
+      <a href="mailto:Abdeljawad202125001@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/abdeljawad-mohammad-a510312a4/" target="_blank">LinkedIn</a>
+      <a href="https://wa.me/201142494264" target="_blank">WhatsApp</a>
+      <a href="images/cv.pdf" download>CV</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <button class="modal-x" id="modalX">✕</button>
+    <div id="modalInner"></div>
+  </div>
+</div>
+
+<script>
+  // NAV
+  const nav = document.getElementById('sitenav');
+  document.getElementById('mobileToggle').addEventListener('click', () => nav.classList.toggle('nav-open'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => nav.classList.remove('nav-open')));
+
+  // REVEAL
+  const ro = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}}),{threshold:0.05,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.reveal,.proj,.sg,.tg,.exp-item,.imp,.stat').forEach(el=>{el.classList.add('reveal');ro.observe(el);});
+
+  // DATA
+  const D = {
+    ins:   {title:"Locafy Insights Dashboard",tags:["HTML/JS","Magento API","n8n","PWA"],imgs:2,captions:["Revenue overview — gross/net, orders, avg value, cancellations","Cancellations, order status, top cities, and top brands"],
+      tools:[{n:"JavaScript",i:"https://cdn.simpleicons.org/javascript/F7DF1E"},{n:"n8n",i:"https://cdn.simpleicons.org/n8n/EA4B71"},{n:"Netlify",i:"https://cdn.simpleicons.org/netlify/00C7B7"},{n:"Magento",i:"images/magento-icon.png"}],
+      problem:"Locafy's management had zero real-time visibility into marketplace performance — relying on slow Magento admin reports, manual CSV exports, and guesswork for daily decisions.",
+      solution:"PWA-enabled operations dashboard that fetches the 1,000 most recent Magento orders in parallel via n8n and the REST API. Surfaces gross/net revenue, top products, brand analytics, city breakdown, 3-day comparison with % change badges, cancellation reasons, and loyal/high-value customer lists — all refreshing in under 5 seconds.",
+      impact:"Instant daily revenue visibility for the ops team. Replaced manual reporting entirely. Installable as a PWA on any device. Used every morning before standup.",
+      arch:"Magento 2 REST API → n8n Automation (4 parallel requests) → Vanilla JS Frontend → Netlify (PWA)"},
+    bosta: {title:"Locafy Bosta Shipments Dashboard",tags:["Vanilla JS","n8n Cloud","Bosta API"],imgs:2,captions:["Order list with status filters and Send buttons","Send to Bosta modal — fuzzy district matching, COD, address"],
+      tools:[{n:"JavaScript",i:"https://cdn.simpleicons.org/javascript/F7DF1E"},{n:"n8n",i:"https://cdn.simpleicons.org/n8n/EA4B71"},{n:"Google Sheets",i:"https://cdn.simpleicons.org/googlesheets/34A853"}],
+      problem:"Shipping staff manually copied order details from Magento to Bosta courier — 4 minutes per order, error-prone address/COD mismatches, and unable to scale past 100+ daily orders.",
+      solution:"Custom integration linking Magento, Bosta API v2, and Google Sheets via n8n Cloud. Fuzzy Arabic/English district matching auto-routes orders to the correct courier zone. Built and deployed in 1 day vs. the estimated 4–6 week dev timeline.",
+      impact:"4 min → 20 sec per order. Zero address or COD errors. Google Sheets synced in real time for warehouse visibility. Fully scalable.",
+      arch:"Magento REST API → n8n Cloud → Bosta API v2 ↔ Google Sheets API"},
+    img:   {title:"Product Image Automation System",tags:["n8n","AI Image API"],imgs:3,captions:["n8n workflow — AI processing pipeline","n8n upload form — SKU and image input","Before/after — AI background replacement output"],
+      tools:[{n:"n8n",i:"https://cdn.simpleicons.org/n8n/EA4B71"}],
+      problem:"Manual background removal and color variant generation across hundreds of SKUs was impossibly slow — each product required individual Photoshop work that couldn't scale with catalog growth.",
+      solution:"n8n-powered web form running two-phase AI image processing — first removes backgrounds, then generates color variants automatically. One upload, multiple production-ready outputs.",
+      impact:"Hours of manual editing compressed to seconds per SKU. Fully automated, scalable across the entire catalog. Freed the design team to focus on creative work.",
+      arch:"Web Form → n8n Workflow → AI Image API → Processed Assets"},
+    sync:  {title:"Magento → Odoo Order Sync",tags:["Magento API","Odoo XML-RPC","n8n","Webhooks","In Progress"],imgs:2,captions:["Main workflow — order intake, customer logic, Odoo quotation","Sub-workflow — Magento orders sync to Google Sheet"],
+      tools:[{n:"Odoo",i:"https://cdn.simpleicons.org/odoo/714B67"},{n:"n8n",i:"https://cdn.simpleicons.org/n8n/EA4B71"},{n:"Magento",i:"images/magento-icon.png"},{n:"WhatsApp",i:"https://cdn.simpleicons.org/whatsapp/25D366"}],
+      problem:"Manual order entry from Magento to Odoo caused data bottlenecks, transcription errors, and hours-long fulfillment delays — every checkout required a human to re-key the order into the ERP.",
+      solution:"Real-time webhook-driven automation using n8n — on Magento checkout, the workflow auto-creates the customer record and a draft Sales Order in Odoo via XML-RPC. It then generates the SO PDF from Odoo and sends it to the customer via WhatsApp as a confirmation message. If the customer confirms, the SO is finalized and moves to fulfillment. If the customer cancels, the order is automatically voided in both systems. Currently in progress — core sync is built, confirmation flow is being implemented.",
+      impact:"Targeting 100% elimination of manual entry. Zero sync errors. 4-hour reduction in order-to-fulfillment lead time. Customer confirmation adds a trust layer before fulfillment begins.",
+      arch:"Magento Webhooks → n8n Orchestrator → Odoo XML-RPC (Draft SO) → SO PDF Generation → WhatsApp Confirmation → Confirm: Finalize SO / Cancel: Void Order"},
+    stock: {title:"ERP ↔ Magento Stock Monitor",tags:["Odoo Stock API","n8n","Magento API"],imgs:2,captions:["n8n workflow — Odoo vs Magento stock comparison","Mismatch report — SKU-level qty differences flagged"],
+      tools:[{n:"Odoo",i:"https://cdn.simpleicons.org/odoo/714B67"},{n:"n8n",i:"https://cdn.simpleicons.org/n8n/EA4B71"},{n:"Magento",i:"images/magento-icon.png"}],
+      problem:"Stock discrepancies between the Odoo warehouse and Magento storefront caused chronic overselling, cancelled orders, and poor customer experience.",
+      solution:"Persistent monitoring layer that polls and validates stock counts between Odoo and Magento every 15 minutes. Mismatches are flagged instantly to the operations team with item-level detail.",
+      impact:"50+ overselling incidents prevented monthly. 99.9% inventory accuracy achieved. Customer complaints from stock issues dropped to near zero.",
+      arch:"Odoo Stock API ↔ n8n Validation Logic ↔ Magento Category API"},
+    wa:    {title:"WhatsApp Sales Assignment Bot",tags:["Rasayel API","Automation"],imgs:4,captions:["Intro message flow — trigger, delay, routing","Full bot at 14% zoom — massive multi-branch structure","Sellers path — vendor onboarding and registration flow","Customers path — orders, returns, complaints, support"],
+      tools:[{n:"WhatsApp",i:"https://cdn.simpleicons.org/whatsapp/25D366"},{n:"Rasayel",i:"https://cdn.simpleicons.org/whatsapp/25D366"}],
+      problem:"WhatsApp sales leads were manually assigned by a supervisor, causing slow response times, uneven rep workload, and lost opportunities during off-hours.",
+      solution:"Large-scale automation bot built in Rasayel with a complex multi-branch workflow serving both sales and customer support. Evaluates lead region, product interest, and rep availability to auto-route incoming WhatsApp conversations instantly. The workflow structure is massive — dozens of conditional branches handling different scenarios, escalation paths, and support routing.",
+      impact:"Average response time cut from 45 minutes to 2 minutes. Sales team efficiency up 30%. No leads lost to assignment delays. Support queries routed automatically without manual intervention.",
+      arch:"Rasayel Bot Builder → Multi-Branch Conditional Logic → Sales & Support Assignment Rules → Rep Routing"},
+    pm:    {title:"Locafy — Full Product Lifecycle",tags:["ClickUp","Product Strategy"],
+      tools:[{n:"ClickUp",i:"https://cdn.simpleicons.org/clickup/7B68EE"}],
+      problem:"No structured process bridging the CEO's vision with what the engineering team actually built — requirements were verbal, priorities shifted weekly, and delivery timelines were unpredictable.",
+      solution:"Owned the full product lifecycle: ran discovery sessions with leadership, wrote detailed PRDs and technical specs, managed the ClickUp backlog, coordinated developer sprints, and personally validated every feature before release sign-off.",
+      impact:"Production marketplace delivered on schedule with all core features validated. Established repeatable delivery process still in use today.",
+      arch:"CEO Discovery → PRD / Technical Spec → ClickUp Backlog → Dev Handoff → QA Validation → Release"},
+    exec:  {title:"Executive Sales Reporting Automation",tags:["Odoo Data","n8n","WhatsApp API"],
+      tools:[{n:"Odoo",i:"https://cdn.simpleicons.org/odoo/714B67"},{n:"n8n",i:"https://cdn.simpleicons.org/n8n/EA4B71"},{n:"WhatsApp",i:"https://cdn.simpleicons.org/whatsapp/25D366"}],
+      problem:"Executives waited until month-end for sales reports, making mid-month course corrections impossible. Leadership had no daily pulse on salesperson performance or product trends.",
+      solution:"Automated pipeline that extracts and aggregates Odoo sales data daily, then generates dynamic HTML reports delivered via email and WhatsApp to the executive team every morning.",
+      impact:"Real-time daily visibility into salesperson performance, top products, and revenue trends. Executives now make data-driven decisions daily instead of monthly.",
+      arch:"Odoo Data Models → n8n Aggregator → HTML Email Template / WhatsApp API"},
+    vendor:{title:"Automated Vendor Communication",tags:["Odoo ERP","n8n","Telegram API","FastAPI"],imgs:2,captions:["n8n workflow — collect order lines, create groups, send orders","Telegram group auto-created with order PDF and vendor tagging"],
+      tools:[{n:"Odoo",i:"https://cdn.simpleicons.org/odoo/714B67"},{n:"n8n",i:"https://cdn.simpleicons.org/n8n/EA4B71"},{n:"FastAPI",i:"https://cdn.simpleicons.org/fastapi/009688"},{n:"Telegram",i:"https://cdn.simpleicons.org/telegram/26A5E4"}],
+      problem:"Multi-vendor orders required operations staff to manually create Telegram groups and notify each vendor separately — slow, error-prone, and a bottleneck at scale.",
+      solution:"Automated pipeline connecting Odoo, n8n, and Telegram via a FastAPI backend. Detects multi-vendor order lines, groups by supplier, and auto-creates dedicated Telegram supergroups with full order details and routing info. Fully built and tested end-to-end — pending operational activation as the team transitions workflows.",
+      impact:"5–10 min manual coordination reduced to seconds per order. Zero vendor routing errors. Operations team freed from repetitive messaging. Screenshots show test environment runs.",
+      arch:"Odoo ERP → n8n → FastAPI Backend → Telegram API (Telethon) → Telegram Supergroups"},
+    cu:    {title:"150+ Requirements Delivered",tags:["ClickUp","PRD Writing","Dev Coordination","QA Sign-off"],imgs:3,captions:["ClickUp backlog overview","PRD / technical spec sample","Task delivery tracking"],
+      tools:[{n:"ClickUp",i:"https://cdn.simpleicons.org/clickup/7B68EE"}],
+      problem:"Locafy needed a structured product delivery process — bridging the CEO's vision with what the engineering team actually built, across automation systems, e-commerce features, and internal tooling.",
+      solution:"Owned the full requirement lifecycle: discovery sessions with leadership, writing detailed PRDs and technical specs, managing the backlog in ClickUp, coordinating dev sprints, and personally validating each feature before sign-off.",
+      impact:"150+ tasks shipped over 2 years with zero missed deadlines on critical workflows. Every automation system and integration in this portfolio started as a ClickUp task I scoped and managed.",
+      arch:"Discovery → PRD / Technical Spec → ClickUp Backlog → Dev Handoff → QA Validation → Release"},
+    pdf:   {title:"Automated PDF Product Sheets",tags:["HTML/CSS/JS","PDF Lib"],imgs:3,captions:["Product sheet generator interface","Generated PDF output","Catalog data input"],
+      tools:[{n:"HTML5",i:"https://cdn.simpleicons.org/html5/E34F26"},{n:"JavaScript",i:"https://cdn.simpleicons.org/javascript/F7DF1E"}],
+      problem:"Manually designing product sheets was tedious, inconsistent, and a bottleneck for the catalog team — each sheet required copy-pasting product data into a template and manual formatting.",
+      solution:"Internal web app that pulls product data and generates standardized, branded PDF sheets in one click. Consistent layout, automatic formatting, instant download.",
+      impact:"Replaced a fully manual design workflow. Consistent, professional output in seconds. Used daily by the catalog team.",
+      arch:"HTML/CSS/JS → AI Content Integration → PDF Generator → Branded Output"}
+  };
+
+  const bg = document.getElementById('modalBg');
+  const inner = document.getElementById('modalInner');
+  document.getElementById('modalX').addEventListener('click', closeM);
+  bg.addEventListener('click', e => { if(e.target===bg) closeM(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeM(); });
+
+  function closeM() {
+    bg.classList.remove('open');
+    document.body.classList.remove('no-scroll');
+  }
+
+  document.querySelectorAll('.open-modal').forEach(btn => btn.addEventListener('click', () => {
+    const key = btn.dataset.p;
+    const d = D[key]; if(!d) return;
+    const projNum = {ins:1,bosta:2,img:3,sync:4,stock:5,wa:6,vendor:7,pdf:8,cu:9};
+    const num = projNum[key] || key;
+    const imgCount = d.imgs || 2;
+    const toolsHtml = d.tools ? d.tools.map(t => `<div class="modal-tool"><img src="${t.i}" alt="${t.n}">${t.n}</div>`).join('') : '';
+    let galleryHtml = '';
+    for (let i = 1; i <= imgCount; i++) {
+      const cap = d.captions && d.captions[i-1] ? d.captions[i-1] : '';
+      galleryHtml += `<div class="g-slot-wrap"><div class="g-slot"><img src="images/project${num}-${i}.png" alt="${d.title} screenshot ${i}" onerror="this.parentElement.innerHTML='Screenshot ${i}'"></div>${cap ? `<div class="g-caption">${cap}</div>` : ''}</div>`;
+    }
+    inner.innerHTML = `
+      <div class="modal-title">${d.title}</div>
+      <div class="modal-tags">${d.tags.map(t=>`<span class="badge">${t}</span>`).join('')}</div>
+      <div class="modal-block"><div class="modal-lbl">Problem</div><p class="modal-p">${d.problem}</p></div>
+      <div class="modal-block"><div class="modal-lbl">Solution</div><p class="modal-p">${d.solution}</p></div>
+      <div class="modal-block"><div class="modal-lbl">Architecture</div><div class="modal-arch">${d.arch}</div></div>
+      ${toolsHtml ? `<div class="modal-block"><div class="modal-lbl">Tools Used</div><div class="modal-tools">${toolsHtml}</div></div>` : ''}
+      <div class="modal-block"><div class="modal-lbl">Impact</div><p class="modal-p">${d.impact}</p></div>
+      <div class="modal-block">
+        <div class="modal-lbl">Media Gallery</div>
+        <div class="modal-gallery">${galleryHtml}</div>
+      </div>`;
+    bg.classList.add('open');
+    document.body.classList.add('no-scroll');
+  }));
+</script>
+</body>
+</html>
